@@ -1,0 +1,41 @@
+
+<div class="container">
+        <h2 class="text-secondary text-center">Transactions Page</h2>
+        <hr />
+       
+ 
+
+<div>
+        <div *ngIf="doesnothaveTransaction">
+        <h6>You do not have any transactions</h6>
+        </div>
+ 
+        <div *ngIf="haveTransaction">
+            <h6>Please find the Transaction details below</h6>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                      <th scope="col">Transaction Type</th>
+                      <th scope="col">Transaction Description</th>
+                      <th scope="col">Transaction Date</th>
+                      <th scope="col">Transaction Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <tr *ngFor="let transaction of transactions | paginate: { itemsPerPage: count, currentPage: p }">
+                      <td>{{transaction.trn_type}}</td>
+                      <td>{{transaction.trn_desc}}</td>
+                      <td>{{transaction.trn_dt_time}}</td>
+                      <td>{{transaction.trn_amt}}</td>
+                    </tr>
+                    </tbody>
+            </table>
+
+             <!--Including the pagination control.-->
+  <div class="text-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+           
+            </div>
+    </div>
+</div>

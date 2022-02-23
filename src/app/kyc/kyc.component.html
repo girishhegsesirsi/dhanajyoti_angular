@@ -1,0 +1,29 @@
+<div class="container h-100">
+    <div *ngIf="showForm" class="d-flex justify-content-center">
+        <form [formGroup]="KycForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+
+            <div class="form-group">
+                <label for="docType">Document Type</label>
+                <select name="docType" formControlName="docType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.docType.errors }">
+                    <option  value="A">Proof of Address</option>
+                    <option  value="B">Date of Birth</option>
+                    <option  value="D">Adhaar</option>
+                    <option  value="P">PAN</option>
+                  </select>
+        
+                  <div *ngIf="submitted && f.docType.errors" class="invalid-feedback">
+                    <div *ngIf="f.docType.errors.required">Please select the document type</div> 
+                </div>
+            </div>
+<div class="row">  
+    <div class="form-group">  
+          
+      <label for="document">Upload Image</label>  
+        <input formControlName="document" class="form-control" type="file" (change)="selectFile($event)">   
+    </div>  
+  </div> 
+<div> <button class="btn btn-md btn-primary btn-style"  >Save</button>  </div>
+        </form>
+    </div>
+    <p>{{returnMsg}}</p>
+</div>

@@ -1,0 +1,42 @@
+<h2>Service Request Page</h2>
+<div>
+        <h6>Charges applicable for the check book</h6>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                  <th scope="col">No. of Check Leaves</th>
+                  <th scope="col">Charges</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>20</td>
+                  <td>100</td>
+                </tr>
+                <tr>
+                        <td>50</td>
+                        <td>200</td>
+                      </tr>
+                      <tr>
+                            <td>100</td>
+                            <td>300</td>
+                          </tr>
+                </tbody>
+        </table>
+       
+        </div>
+
+
+        
+        <div *ngIf="!hasOpenSR">
+                <form  [formGroup]="srForm" (ngSubmit)="createSR()">
+                        <select name="ben" formControlName="srType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.srType.errors }">
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                              </select>
+                <button>Create </button>      
+                </form>
+            </div>
+      
+        <span>{{returnMsg}}</span>

@@ -1,0 +1,11 @@
+<div>
+
+  <div>
+  <main role="main" class="container">
+    <h1>Hi {{currentUser.fname}}!</h1>
+    <p *ngIf="isActive">Welcome</p>
+    <p *ngIf="isActive"><a routerLink="/savingAccounts">Check Account Balance</a></p>
+    <p *ngIf="!isActive">Your account is not yet active!, please upload the documents to complete th registration procedure</p>
+    </main>
+  </div>
+  </div>
